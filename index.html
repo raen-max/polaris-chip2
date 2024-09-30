@@ -19,57 +19,95 @@
     polaris-chip {
       margin: 16px;
     }
+    button {
+      background-color: pink;
+      border-radius: 8px;
+      color: white;
+      margin: 4px;
+      font-size: 16px;
+    }
   </style>
   <title>polaris-chip / my-card</title>
 </head>
 
 <body>
+  <body>
+    <div class="code-by-number-buttons"></div>
+      <button class="make">Clone Card</button>
+      <button class="delete">Delete Last</button>
+      <button id="change-bg">Change Background</button>
+      <button id="change-img">Change Image</button>
+      <button id="change-title">Change Title</button>
+    </div>
+
   <h1>polaris-chip</h1>
   <!-- this is going to do whatever the tag's defaults are -->
-  <polaris-chip title="News of Record" link="https://psu.edu/"></polaris-chip>
-  <polaris-chip title="Faculty and Staff"></polaris-chip>
+  <polaris-chip title="News of Record" link="https://psu.edu/"> shiny</polaris-chip>
+  <polaris-chip title="Faculty and Staff"link="https://hax.psu.edu"></polaris-chip>
   <polaris-chip title="Sports are the only thing that matter"></polaris-chip>
   <polaris-chip title="Grants and donations"></polaris-chip>
 
   <div class="my-card">
-    <my-card>
-    image = "https://images.app.goo.gl/kWhkdxcBgJAx5Mm79"
-    title = "Glow Worms!"
+    <h1>my-card</h1>
+    <my-card
+    image="https://www.zealandiertours.com/wp-content/uploads/2016/09/waitomo-caves-1600x1200.jpg"
+    title= "Glow Worms!"
     description = "Waitomo Glow Worm Caves"
-    link = "https://hax.psu.edu"
-    buttonDescription = "Wormy <3">
+    link= "https://hax.psu.edu"
+    buttonDescription = "Wormy">
+      <p><3</p>
+      <p><3</p>
+      <p><3</p>
+      <p><3</p>
+      <p><3</p>
     </my-card>
-
-    <my-card>
-      image = "https://images.app.goo.gl/J49QTXZyj1xf6WGg9"
-      title = "Trinidad and Tobago"
-      description = "Trini Born"
-      link = "https://hax.psu.edu"
-      buttonDescription = "I wanna go home"
+    <my-card
+      image="https://www.ccreee.org/wp-content/uploads/2020/06/trinidad.jpg"
+      title="Trinidad and Tobago"
+      description="Trini Born"
+      link="https://hax.psu.edu"
+      buttonDescription="Home">
+      <p><3</p>
+      <p><3</p>
+      <p><3</p>
+      <p><3</p>
+      <p><3</p>
     </my-card>
-
-    <my-card>
-      image = "https://images.app.goo.gl/j56RGEXCLjoDFNoQ7"
-      title = "Kaikoura"
-      description = "Longest hike of my life"
-      link = "https://hax.psu.edu"
-      buttonDescription = "IloveKaikoura"
+    <my-card
+      image="https://www.kaikourakayaks.nz/library/images/wildlife/01-kaikoura-canterbury-kyle-mulinder.jpg"
+      title="Kaikoura"
+      description="Longest hike of my life"
+      link="https://hax.psu.edu"
+      buttonDescription="IloveKaikoura">
+      <p><3</p>
+      <p><3</p>
+      <p><3</p>
+      <p><3</p>
+      <p><3</p>
     </my-card>
-
-    <my-card>
-      image = "https://images.app.goo.gl/PLSWP97AAQcVxGNc8"
-      title = "Texan Raised"
-      description = "Houston Sunset"
-      link = "https://hax.psu.edu"
-      buttonDescription = "Extraño los tacos de dos dólares"
+    <my-card
+      image="https://htxoutdoors.com/wp-content/uploads/sites/7/2016/12/Downtown-Sunset.png"
+      title="Texan Raised"
+      description="Houston Sunset"
+      link="https://hax.psu.edu"
+      buttonDescription="Extraño los tacos de dos dólares">
+      <p><3</p>
+      <p><3</p>
+      <p><3</p>
+      <p><3</p>
+      <p><3</p>
     </my-card>
-
-    <my-card>
-      image = "https://images.app.goo.gl/NzqXZg9eUVEztH2A7"
-      title = "Aurora Borealis"
-      description = "Pretty Pretty Lights"
-      link = "https://hax.psu.edu"
-      buttonDescription = "My brother woke me up at 3am to go see these, it was fun"
+    <my-card
+      image="https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill,h_685,q_75,w_1200/http://res.cloudinary.com/simpleview/image/upload/v1510249523/clients/fairbanks/September_2017_Aurora_286aeb9b-5c92-4e45-9861-1226aa1fc1de.jpg"
+      title="Aurora Borealis"
+      description="Pretty Pretty Lights"
+      link="https://hax.psu.edu"
+      buttonDescription="My brother woke me up at 3am to go see these, it was fun">
+      <p>Niche</p>
+      <p>Niche</p>
+      <p>Niche</p>
+      <p>Niche</p>
+      <p>Niche</p>
     </my-card>
   </div>
 
@@ -77,6 +115,31 @@
   <!-- this is what is bringing in the definition for this tag -->
   <script type="module" src="./src/polaris-chip.js"></script>
   <script type="module" src="./src/my-card.js"></script>
+  <script>
+  document.querySelector('.make').addEventListener('click', function(event) {
+    const newCard = document.querySelector('my-card').cloneNode(true);
+   document.querySelector('body').appendChild(newCard);
+  });
+  
+  document.querySelector('.delete').addEventListener('click', function(event) {
+    if (document.querySelectorAll('my-card').length > 1) {
+    document.querySelector('my-card:last-child').remove();}
+  });
+  
+  document.querySelector('#change-bg').addEventListener('click', function(event) {
+    //document.querySelector('.main').classList.add('bckgrnd');
+    //^^^above code won't work for some reason.
+    document.querySelector('my-card').fancy = !document.querySelector('my-card').fancy;
+  });
+  
+  document.querySelector('#change-img').addEventListener('click', function(event) {
+    document.querySelector('my-card').image = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Charli_XCX_-_Brat_%28album_cover%29.png/1200px-Charli_XCX_-_Brat_%28album_cover%29.png";
+  });
+  
+  document.querySelector('#change-title').addEventListener('click', function(event) {
+    document.querySelector('my-card').title = "<3";
+  });
+  </script>
 </body>
 
 </html>

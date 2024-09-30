@@ -14,11 +14,11 @@ export class MyCard extends LitElement {
 
   constructor() {
     super();
-    this.title = ' ';
-    this.link =  '#';
+    this.title = '';
+    this.link =  "#";
     this.image = null;
-    this.description = ' ';
-    this.buttonDescription = ' ';
+    this.description = '';
+    this.buttonDescription = '';
     this.fancy = false;
   }
 
@@ -26,17 +26,21 @@ export class MyCard extends LitElement {
     return css`
       :host {
         display: inline-block;
-        font-family: cooperplate, fantasy;
+        font-family: Veranda;
+        background-color: pink;
+        margin: 24px;
+        max-width: 390px;
+        border-radius: 16px;
+        border: solid black 4px;
       }
       :host([fancy]) {
         display: inline-block;
-        background-color: pink;
-        border: 2px solid fuchsia;
-        box-shadow: 10px 5px 5px red;
+        background-color: lightgreen;
+        border: outset seagreen;
       }
-      dev {
-        width: 250px;
-        margin: 8px;
+      div {
+        width: 280px;
+        margin: 16px;
         background-color: paleturquoise;
         border-style: solid;
         border-width: 4px;
@@ -47,15 +51,18 @@ export class MyCard extends LitElement {
         color: black;
       }
       img {
-        width: 245px;
+        width: 100%;
+        max-width: 150px;
         border-radius: 8px;
+        border: 2px solid pink;
         border-style: solid;
-        border-color: black;
+        border-color: pink;
         border-width: 2px;
       }
+
       details summary {
         text-align: left;
-        font-size: 20px;
+        font-size: 18px;
         padding: 8px 0;
       }
       details[open] summary{
@@ -65,21 +72,21 @@ export class MyCard extends LitElement {
         border: 2px solid black;
         margin: auto;
         text-align: left;
-        padding: 4px;
+        padding: 8px;
         height: auto;
         width: 245px;
         overflow: auto;
       }
       button{
         font-family: copperplate, fantasy;
-        font-size: 12pt;
-        color: black;
-        padding: 4px;
-        margin: 8px;
+        font-size: 14pt;
+        color: pink;
+        padding: 6px 12px;
+        margin: 10px 0;
         border-style: ridge;
         border-color: black;
-        background-color: black;
-        border-radius: 8px;
+        background-color: white;
+        border-radius: 20px;
         text-decoration: none;
         cursor: pointer;
       }
@@ -96,7 +103,7 @@ export class MyCard extends LitElement {
         <h1>${this.title}</h1>
         <p>${this.description}</p>
         <details ?open="${this.fancy}" @toggle="${this.openChanged}">
-          <summary> Description </summary>
+          <summary>Description</summary>
           <div>
             <slot>${this.description}</slot>
           </div>
@@ -115,15 +122,14 @@ export class MyCard extends LitElement {
       this.fancy = false;
     }
   }
-
   static get properties() {
     return {
       title: { type: String },
       image: {type: String },
-      description: {type: String },
-      link: {type: String },
-      buttonDescription: {type: String },
-      fancy: {type: Boolean, reflect: true}
+      description: { type: String },
+      link: { type: String },
+      buttonDescription: { type: String },
+      fancy: { type: Boolean, reflect: true}
     };
   }
 }
